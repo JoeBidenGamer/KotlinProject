@@ -1,94 +1,55 @@
-class ContactList{
-    private val contactList = mutableListOf<Person>()
+fun main(args: Array<String>) {
+    var i: Int
+    var ID: Int
+    var firstName: String
+    var lastName: String
+    var phoneNum1: String
+    var phoneNum2: String
+    var phoneNum3: String
+    var mail: String
 
-    fun addContact(person: Person){
-        contactList.add(person)
-    }
+    val contactList = ContactList()
+    contactList.addContact(Person("David", "lastName" , "1234567", "0", "0", "David@gmail.com"))
+    contactList.addContact(Person("Adam", "lastName2", "9876543", "9374683", "0", "Adam@gmail.com"))
+    contactList.addContact(Person("Eva", "lastName3", "4676543", "235345", "3456456", "Eva@gmail.com"))
+    do{
+        println("1. Add contact")
+        println("2. Remove contact")
+        println("3. Edit contact")
+        println("4. Show contact list")
+        println("0. Exit")
+        i = Integer.valueOf(readln())
 
-    fun removeContact(index: Int){
-        if (contactList.count() >= index)
-        {
-            contactList.removeAt(index)
+        if(i == 1){
+            print("Person firstname: ")
+            firstName = readln()
+            print("Person lastname: ")
+            lastName = readln()
+            print("Person phone-number 1 (if there is no phone number input 0): ")
+            phoneNum1 = readln()
+            print("Person phone-number 2 (if there is no phone number input 0): ")
+            phoneNum2 = readln()
+            print("Person phone-number 3 (if there is no phone number input 0): ")
+            phoneNum3 = readln()
+            print("Person mail: ")
+            mail = readln()
+            contactList.addContact(Person(firstName, lastName, phoneNum1, phoneNum2, phoneNum3, mail))
+        }
+        else if(i == 2){
+            print("Person ID: ")
+            ID = Integer.valueOf(readln())
+            contactList.removeContact(ID)
+        }
+        else if(i == 3){
+            print("Person ID: ")
+            ID = Integer.valueOf(readln())
+            contactList.editContact(ID)
+        }
+        else if(i == 4){
+            contactList.showContactList()
         }
     }
+    while (i != 0)
 
-    fun printperson(ID: Int){
-        println("First name;" + contactList[ID].firstName)
-        println("First name;" + contactList[ID].lastName)
-        println("First name;" + contactList[ID].phoneNumber1)
-        println("First name;" + contactList[ID].phoneNumber2)
-        println("First name;" + contactList[ID].phoneNumber3)
-        println("First name;" + contactList[ID].mailAddress)
-    }
-    fun editContact(ID: Int){
-        val PersonVaribales = arrayOf("firstName", "lastName", "phoneNumber1", "phoneNumber2", "phoneNumber3", "mailAddress")
-
-        println("what information do you want to change?")
-        printperson(ID)
-        var WhatToChange = readln()
-
-        if(WhatToChange == PersonVaribales[0])
-        {
-            println("Write the new first name;")
-            var newFirstname = readln()
-            contactList[ID].firstName = newFirstname
-        }
-        else if(WhatToChange == PersonVaribales[1])
-        {
-            println("Write the new first name;")
-            var newFirstname = readln()
-            contactList[ID].firstName = newFirstname
-        }
-        else if(WhatToChange == PersonVaribales[2])
-        {
-            println("Write the new first name;")
-            var newFirstname = readln()
-            contactList[ID].firstName = newFirstname
-        }
-        else if(WhatToChange == PersonVaribales[3])
-        {
-            println("Write the new first name;")
-            var newFirstname = readln()
-            contactList[ID].firstName = newFirstname
-        }
-        else if(WhatToChange == PersonVaribales[4])
-        {
-            println("Write the new first name;")
-            var newFirstname = readln()
-            contactList[ID].firstName = newFirstname
-        }
-        else if(WhatToChange == PersonVaribales[5])
-        {
-            println("Write the new first name;")
-            var newFirstname = readln()
-            contactList[ID].firstName = newFirstname
-        }
-    }
-
-    fun showContactList(){
-        //Ska visas i alfabetisk ordning
-        println("Contact List:")
-        contactList.sortBy { it.firstName }
-
-        for((i) in contactList.withIndex()){
-            if(contactList[i].phoneNumber1 == "0"){
-                println(contactList[i].firstName + "\n" + contactList[i].lastName + "\n" + contactList[i].mailAddress)
-                println("------------------------------------------------------")
-            }
-            else if(contactList[i].phoneNumber2 == "0"){
-                println(contactList[i].firstName + "\n" + contactList[i].lastName + "\n" + contactList[i].phoneNumber1 +
-                        "\n" + contactList[i].mailAddress)
-                println("------------------------------------------------------")
-            }
-            else if(contactList[i].phoneNumber3 == "0"){
-                println(contactList[i].firstName + "\n" + contactList[i].lastName + "\n" + contactList[i].phoneNumber1 + "\n" +
-                        contactList[i].phoneNumber2 + "\n" + contactList[i].mailAddress)
-                println("------------------------------------------------------")
-            }
-            else{
-                println(contactList[i].firstName + "\n" + contactList[i].lastName + "\n" + contactList[i].phoneNumber1 + "\n" +
-                        contactList[i].phoneNumber2 + "\n" + contactList[i].phoneNumber3 + "\n" + contactList[i].mailAddress)
-                println("------------------------------------------------------")
-            }
-    }
+    println("Program arguments: ${args.joinToString()}")
 }
