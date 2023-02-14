@@ -5,7 +5,7 @@ class ContactList{
         contactList.add(person)
     }
 
-    fun removeContact(person: Person, index: Int){
+    fun removeContact(index: Int){
         if (contactList.count() >= index)
         {
             contactList.removeAt(index)
