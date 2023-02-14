@@ -9,6 +9,9 @@ fun main(args: Array<String>) {
     contactList.addContact(person2)
     contactList.addContact(person3)
     contactList.showContactList()
+    contactList.removeContact(1)
+    println("Newlist: \n")
+    contactList.showContactList()
 
     println("Program arguments: ${args.joinToString()}")
 }
