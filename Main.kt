@@ -1,24 +1,14 @@
 fun main(args: Array<String>) {
 
-    /*val person = Person("firstName2323", "lastName", "phone1", "phone2", "phone3", "Mail")
+    val person = Person("Eva", "lastName", "07312345678", "0", "0", "Mail@gmail.com")
+    val person2 = Person("Adam", "lastName22", "0723456784", "01273122", "0", "Mail2@gmail.com")
+    val person3 = Person("David", "lastName22", "0723456784", "01273122", "012321314", "Mail2@gmail.com")
+    val contactList = ContactList()
 
-    val contactList = mutableListOf<Person>()
-
-
-    contactList.add(person)
-
-    println("Person 1: ")
-    println(contactList[0].firstName)
-    println(contactList[0].lastName)
-    println(contactList[0].phoneNumber1)
-    println(contactList[0].phoneNumber2)
-    println(contactList[0].phoneNumber3)
-    println(contactList[0].mailAddress)
-    println("Person 2: ")
-    println(contactList[1].firstName)
-    println(contactList[1].lastName)
-    println(contactList[1].phoneNumber1)
-    println(contactList[1].mailAddress)*/
+    contactList.addContact(person)
+    contactList.addContact(person2)
+    contactList.addContact(person3)
+    contactList.showContactList()
 
     println("Program arguments: ${args.joinToString()}")
 }
