@@ -1,3 +1,5 @@
+import java.io.File
+
 class ContactList{
     private val contactList = mutableListOf<Person>()
 
@@ -115,5 +117,59 @@ class ContactList{
                 println("------------------------------------------------------")
             }
         }
+    }
+
+    fun saveToTxtFile(){
+        try{
+            //Variabel till text filen
+            val myFile = File("kotlinSave.txt")
+            //Skriver information till text filen
+            myFile.printWriter().use {
+                out ->
+
+                for((i) in contactList.withIndex()){
+                    if(contactList[i].phoneNumber1 == "0"){
+                        out.println("ID: " + i + "\n" + contactList[i].firstName + " "  + contactList[i].lastName + "\n" + contactList[i].mailAddress)
+                        out.println("------------------------------------------------------")
+                    }
+                    else if(contactList[i].phoneNumber2 == "0"){
+                        out.println("ID: " + i + "\n" + contactList[i].firstName + " " + contactList[i].lastName + "\n" + contactList[i].phoneNumber1 +
+                                "\n" + contactList[i].mailAddress)
+                        out.println("------------------------------------------------------")
+                    }
+                    else if(contactList[i].phoneNumber3 == "0"){
+                        out.println("ID: " + i + "\n" + contactList[i].firstName + " " + contactList[i].lastName + "\n" + contactList[i].phoneNumber1 + "\n" +
+                                contactList[i].phoneNumber2 + "\n" + contactList[i].mailAddress)
+                        out.println("------------------------------------------------------")
+                    }
+                    else if(contactList[i].firstName == ""){
+                        out.println("Empty List!!!")
+                    }
+                    else{
+                        out.println("ID: " + i + "\n" + contactList[i].firstName + " " + contactList[i].lastName + "\n" + contactList[i].phoneNumber1 + "\n" +
+                                contactList[i].phoneNumber2 + "\n" + contactList[i].phoneNumber3 + "\n" + contactList[i].mailAddress)
+                        out.println("------------------------------------------------------")
+                    }
+                }
+            }
+        }
+        catch (e: Exception){
+            e.printStackTrace()
+        }
+    }
+
+    fun readFromTxtFile(){
+        try{
+            //Läser information från text filen och skriver ut det
+            val lines : List<String> =File("kotlinSave.txt").readLines()
+            lines.forEach{line -> println(line)}
+        }
+        catch (e: Exception){
+            e.printStackTrace()
+        }
+        finally {
+            println("Read successfully!")
+        }
+
     }
 }
