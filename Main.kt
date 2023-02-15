@@ -21,6 +21,8 @@ fun main(args: Array<String>) {
         println("2. Remove contact")
         println("3. Edit contact")
         println("4. Show contact list")
+        println("5. Save to text file")
+        println("6. Read from text file")
         println("0. Exit")
         i = Integer.valueOf(readln())
 
@@ -38,6 +40,7 @@ fun main(args: Array<String>) {
             print("Person mail: ")
             mail = readln()
             contactList.addContact(Person(firstName, lastName, phoneNum1, phoneNum2, phoneNum3, mail))
+            contactList.saveToTxtFile()
         }
         else if(i == 2){
             print("Person ID: ")
@@ -48,15 +51,19 @@ fun main(args: Array<String>) {
             print("Person ID: ")
             ID = Integer.valueOf(readln())
             contactList.editContact(ID)
+            contactList.saveToTxtFile()
         }
         else if(i == 4){
             contactList.showContactList()
         }
+        else if(i == 5){
+            contactList.saveToTxtFile()
+        }
+        else if(i == 6){
+            contactList.readFromTxtFile()
+        }
     }
     while (i != 0)
-
-
-
 
     println("Program arguments: ${args.joinToString()}")
 }
