@@ -20,6 +20,39 @@ class ContactList{
             println("The person with ID (${ID}) doesn't exist")
         }
     }
+    fun Search(id: String){
+        val contactListSearch = mutableListOf<Person>()
+    try {
+        for ((i) in contactList.withIndex()) {
+            if (contactList[i].firstName == id) {
+                contactListSearch.add(contactList[i])
+            } else if (contactList[i].lastName == id) {
+                contactListSearch.add(contactList[i])
+            } else if (contactList[i].mailAddress == id) {
+                contactListSearch.add(contactList[i])
+            } else if (contactList[i].phoneNumber1 == id) {
+                contactListSearch.add(contactList[i])
+            } else if (contactList[i].phoneNumber2 == id) {
+                contactListSearch.add(contactList[i])
+            } else if (contactList[i].phoneNumber3 == id) {
+                contactListSearch.add(contactList[i])
+            }
+        }
+        for ((i) in contactListSearch.withIndex()) {
+            println("------------------------------------------------------")
+            println("firstName: " + contactListSearch[i].firstName)
+            println("lastName: " + contactListSearch[i].lastName)
+            println("phoneNumber1: " + contactListSearch[i].phoneNumber1)
+            println("phoneNumber2: " + contactListSearch[i].phoneNumber2)
+            println("phoneNumber3: " + contactListSearch[i].phoneNumber3)
+            println("mailAddress: " + contactListSearch[i].mailAddress)
+            println("------------------------------------------------------")
+        }
+    }
+    catch (e: Exception){
+        println("Error; Cloud not find A perosn who fit the peramator")
+    }
+    }
 
     fun editContact(ID: Int){
         var newValue: String
@@ -125,7 +158,7 @@ class ContactList{
             val myFile = File("kotlinSave.txt")
             //Skriver information till text filen
             myFile.printWriter().use {
-                out ->
+                    out ->
 
                 for((i) in contactList.withIndex()){
                     if(contactList[i].phoneNumber1 == "0"){
