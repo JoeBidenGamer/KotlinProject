@@ -14,6 +14,7 @@ fun main(args: Array<String>) {
     contactList.addContact(Person("David", "lastName" , "1234567", "0", "0", "David@gmail.com"))
     contactList.addContact(Person("Adam", "lastName2", "9876543", "9374683", "0", "Adam@gmail.com"))
     contactList.addContact(Person("Eva", "lastName3", "4676543", "235345", "3456456", "Eva@gmail.com"))
+    contactList.addContact(Person("David", "lastName" , "12645367", "0", "0", "David2@gmail.com"))
 
     //Meny med val
     do{
@@ -23,6 +24,7 @@ fun main(args: Array<String>) {
         println("4. Show contact list")
         println("5. Save to text file")
         println("6. Read from text file")
+        println("7. Search with peramater")
         println("0. Exit")
         i = Integer.valueOf(readln())
 
@@ -61,6 +63,11 @@ fun main(args: Array<String>) {
         }
         else if(i == 6){
             contactList.readFromTxtFile()
+        }
+        else if(i == 7) {
+            println("Whats the permator")
+            var Peramator = readln()
+        contactList.Search(Peramator)
         }
     }
     while (i != 0)
